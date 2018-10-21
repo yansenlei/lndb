@@ -1,0 +1,29 @@
+{
+  "name": "lndb",
+  "version": "0.0.1",
+  "description": "A file database for electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "database",
+    "db"
+  ],
+  "author": "leiyswork@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.4.11",
+    "arraybuffer-to-buffer": "0.0.4",
+    "blob-to-buffer": "^1.2.8",
+    "graceful-fs": "^4.1.11",
+    "is-array-buffer": "^1.0.1",
+    "is-blob": "^1.0.0",
+    "isutf8": "^2.0.2",
+    "lodash": "^4.17.10",
+    "steno": "^0.4.4",
+    "tempfile": "^2.0.0",
+    "webpack": "^4.16.5"
+  }
+}
