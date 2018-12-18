@@ -59,7 +59,7 @@ pg.clear()
                 ├── index.html
                 └── about.html
     ```
-    你通过`.get(key)`获取到的数据像这样：
+    此时，你通过`.get(key)`获取到的数据像这样：
     ```json
     {
       "files": {
@@ -76,7 +76,7 @@ pg.clear()
     }
     ```
 2. 如果存入数据是如上面举例那样的`Object`类型，在读取时会默认加载数据信息可以通过`get(key).data`获取，如果需要更灵活的操作数据信息可以使用`lodash`插件。
-3. 由于使用的是文件命名，所以命名上对符号(`\` `/`) 是很敏感的，虽然程序会默认使用`__lndb__`来替换敏感符号后再命名文件，但是希望你在使用的时候注意规避敏感符号以保证程序正常运行。
+3. 由于使用的是文件命名，所以命名上对符号(`\` `/`) 是敏感的，虽然程序会默认使用`__lndb__`来替换敏感符号后再命名文件，但是希望你在使用的时候注意规避敏感符号以保证程序正常运行。
 
 ## 插件机制
 也许默认的读写操作并不能满足你的需求，值得一提的是，Lndb 的核心是可以灵活的扩展读写功能，你可以引入符合标准的插件来替换现有的读写功能:
@@ -84,7 +84,7 @@ pg.clear()
 const demoPlugin = require('demo-plugin')
 // add plugin
 db.use('demo-plugin', demoPlugin, { "options": true})
-
+// init instance
 const pg = db.init('page')
 
 pg.set('key', { hello: 'lndb!'}, {
