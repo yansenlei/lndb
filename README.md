@@ -1,5 +1,9 @@
 # Lndb
 
+[![npm version](https://badge.fury.io/js/lndb.svg)](https://badge.fury.io/js/lndb)
+[![Build Status](https://travis-ci.org/yansenlei/lndb.svg?branch=master)](https://travis-ci.org/yansenlei/lndb)
+[![license](https://img.shields.io/npm/l/express.svg)](https://github.com/yansenlei/lndb/blob/master/LICENSE)
+
 > :file_folder: lndb是基于本地文件系统封装的一套灵活的持久化存储数据库，支持Node、Electron等。
 
 使用文件系统作为基础存储方式，并在上层读写时提供灵活的插件机制，这意味着你可以根据自己的需求定制读写功能，详细信息查看[插件机制](#插件机制)。
@@ -14,23 +18,7 @@ $ npm install lndb
 
 ## 使用
 
-```js
-const LNDB = require('lndb')
-const db = new LNDB('your/path')
-// 初始类型
-const pg = db.init('page')
-// 写入数据
-pg.set('key', {hello: 'lndb!'})
-
-// 读取类型信息
-pg.get('key')
-
-// 删除指定key的缓存
-pg.remove('key')
-
-// 清空类型下所有缓存
-pg.clear()
-```
+![carbon (4).png](https://i.loli.net/2018/12/20/5c1b27e58c069.png)
 
 ## 读写信息说明
 1. 默认情况下不论存入何种数据类型，通过`.get(key)`获取到的都是一个文件结构，这是为了可以自由的获取文件信息。
@@ -182,6 +170,6 @@ pg.get('key')
 </details>
 
 ## License
-:smiley: 如果你有任何意见或者想贡献本项目，欢迎提交Issues或PR。
+:smiley: 欢迎提交Issues或PR。
 
 MIT - [yansenlei](https://github.com/yansenlei)

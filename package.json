@@ -1,6 +1,6 @@
 {
   "name": "lndb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A file database for electron",
   "main": "src/main.js",
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "keywords": [
     "electron",
+    "cache",
     "database",
     "db"
   ],
@@ -25,5 +26,13 @@
     "steno": "^0.4.4",
     "tempfile": "^2.0.0",
     "webpack": "^4.16.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yansenlei/lndb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yansenlei/lndb/issues"
+  },
+  "homepage": "https://github.com/yansenlei/lndb#readme"
 }
