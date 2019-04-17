@@ -1,4 +1,5 @@
 const lodash = require('lodash')
+const EventEmitter = require('events')
 
 module.exports = {
   install(LN, params = {}, options = {}) {
@@ -26,12 +27,28 @@ module.exports = {
 
     db.read = () => {
       const d = LN.fls.get(id)
+      if (watcher) {
+        watcher.emit('read', id, d)
+      }
       const r = d && d.data ? d.data : undefined
       return plant(r)
     }
 
+    watcher = null
+
+    db.getWatcher = () => {
+      if (!watcher) {
+        watcher = new EventEmitter()
+      }
+      return watcher
+    }
+    
     db.write = returnValue => {
-      LN.fls.set(id, db.getState())
+      const data = db.getState()
+      LN.fls.set(id, data)
+      if (watcher) {
+        watcher.emit('write', id, data, returnValue)
+      }
       return returnValue
     }
 

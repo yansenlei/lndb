@@ -4,21 +4,25 @@ const fileManager = require('../files')
 const Base = require('../base')
 const { replaseId } = require('../common/tools')
 
-class dataManager{
-  constructor(datapath) {
+class dataManager {
+  constructor (datapath) {
     this.base = new Base()
     this.fls = new fileManager(datapath)
     this.datapath = datapath
   }
 
-  getChilds() {
+  getChilds () {
     return this.fls.getChilds()
   }
 
-  set(id, value, plugin) {
+  set (id, value, plugin) {
     id = replaseId(id, this.base.$DEFAULT_DB_NAME)
-    this.fls.initFolder(this.base.$DBPathFolder, this.datapath, path.join(this.datapath, id))
-    if(plugin && plugin.name && this.base.extensions[plugin.name]) {
+    this.fls.initFolder(
+      this.base.$DBPathFolder,
+      this.datapath,
+      path.join(this.datapath, id)
+    )
+    if (plugin && plugin.name && this.base.extensions[plugin.name]) {
       const use = this.base.extensions[plugin.name]
       const params = {
         id: id,
@@ -27,14 +31,14 @@ class dataManager{
       try {
         return use.ext.install(this, params, plugin.options || use.options)
       } catch (e) {
-        throw(e)
+        throw e
       }
     } else {
       return this.fls.set(id, value)
     }
   }
 
-  setAsync(id, value, plugin) {
+  setAsync (id, value, plugin) {
     return new Promise((resolve, reject) => {
       try {
         resolve(this.set(id, value, plugin))
@@ -44,30 +48,31 @@ class dataManager{
     })
   }
 
-  get(id, plugin) {
+  get (id, plugin) {
     id = replaseId(id, this.base.$DEFAULT_DB_NAME)
-    if(plugin && plugin.name && this.base.extensions[plugin.name]) {
+    if (plugin && plugin.name && this.base.extensions[plugin.name]) {
       const use = this.base.extensions[plugin.name]
       const params = {
         id: id,
         value: this.fls.get(id)
       }
       try {
+        debugger
         return use.ext.install(this, params, plugin.options || use.options)
       } catch (e) {
-        throw(e)
+        throw e
       }
     } else {
       return this.fls.get(id)
     }
   }
 
-  remove(id) {
+  remove (id) {
     id = replaseId(id, this.base.$DEFAULT_DB_NAME)
     return this.fls.remove(id)
   }
 
-  clear() {
+  clear () {
     return this.fls.clear()
   }
 }

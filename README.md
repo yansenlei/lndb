@@ -129,7 +129,9 @@ module.exports = {
 ```js
 const pg = db.init('page')
 
-const _ = pg.get('key', ['lodash'])
+const _ = pg.get('key', {
+  name: 'lodash'
+})
 _.setState({hello: 'lndb!'}).write()
 _.getState() // { hello: 'lndb!'}
 _.has("hello").value() // true
